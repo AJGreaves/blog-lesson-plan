@@ -16,7 +16,13 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
