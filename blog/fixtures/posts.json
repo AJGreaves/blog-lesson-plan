@@ -1,7 +1,7 @@
 [
     {
         "model": "blog.post",
-        "pk": 1,
+        "pk": null,
         "fields": {
             "title": "Breakpoints or Breaking Point? Surviving JavaScript Debugging",
             "slug": "breakpoints-or-breaking-point-surviving-javascript-debugging",
@@ -15,7 +15,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 2,
+        "pk": null,
         "fields": {
             "title": "Django Unchained: Breaking Free from the Confines of Vanilla Web Development",
             "slug": "django-unchained-breaking-free-from-vanilla-web-development",
@@ -29,7 +29,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 3,
+        "pk": null,
         "fields": {
             "title": "Indenting My Life Away: Musings of a Python Newbie",
             "slug": "indenting-my-life-away-musings-of-a-python-newbie",
@@ -43,7 +43,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 4,
+        "pk": null,
         "fields": {
             "title": "The Softer Side of Code: Essential Soft Skills for Software Developers",
             "slug": "the-softer-side-of-code-essential-soft-skills-for-software-developers",
@@ -57,7 +57,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 5,
+        "pk": null,
         "fields": {
             "title": "Cracking the Coding Interview: Strategies and Tips",
             "slug": "cracking-the-coding-interview-strategies-and-tips",
@@ -71,7 +71,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 6,
+        "pk": null,
         "fields": {
             "title": "Building a Portfolio That Pops: Showcasing Your Developer Skills",
             "slug": "building-a-portfolio-that-pops-showcasing-your-developer-skills",
@@ -85,7 +85,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 7,
+        "pk": null,
         "fields": {
             "title": "Agile, Scrum, and Beyond: Navigating Project Management Methodologies",
             "slug": "agile-scrum-and-beyond-navigating-project-management-methodologies",
@@ -99,7 +99,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 8,
+        "pk": null,
         "fields": {
             "title": "Decoding Project Management: A No-Nonsense Guide to Agile, Scrum, and More",
             "slug": "decoding-project-management-a-no-nonsense-guide-to-agile-scrum-and-more",
@@ -113,7 +113,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 9,
+        "pk": null,
         "fields": {
             "title": "From Spaghetti to Clean Code: The Ultimate Code Refactoring Field Guide",
             "slug": "from-spaghetti-to-clean-code-the-ultimate-code-refactoring-field-guide",
@@ -127,7 +127,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 10,
+        "pk": null,
         "fields": {
             "title": "The Evolution of Programming Languages: A Look Through the Ages",
             "slug": "the-evolution-of-programming-languages",
@@ -141,7 +141,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 11,
+        "pk": null,
         "fields": {
             "title": "Machine Learning for Developers: Breaking Down the Hype",
             "slug": "machine-learning-for-developers",
@@ -155,7 +155,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 12,
+        "pk": null,
         "fields": {
             "title": "Choosing Your First Programming Language",
             "slug": "choosing-your-first-programming-language",
@@ -169,7 +169,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 13,
+        "pk": null,
         "fields": {
             "title": "Google-Fu: Mastering the Art of Efficient Searching for Developers",
             "slug": "google-fu-mastering-the-art-of-efficient-searching-for-developers",
@@ -183,7 +183,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 14,
+        "pk": null,
         "fields": {
             "title": "SOS to SOLVED: Crafting Questions That Get You Unstuck in Development",
             "slug": "sos-to-solved-crafting-questions-that-get-you-unstuck-in-development",
@@ -197,7 +197,7 @@
     },
     {
         "model": "blog.post",
-        "pk": 15,
+        "pk": null,
         "fields": {
             "title": "Pixel Perfect: The Developer's Guide to Image Optimization for the Web",
             "slug": "pixel-perfect-the-developers-guide-to-image-optimization-for-the-web",
