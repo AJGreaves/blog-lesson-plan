@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "8000-ajgreaves-blog-lesson-pl-lfv6kgfdws.us2.codeanyapp.com",
+    "8000-ajgreaves-blog-lesson-pl-mjfxnpd4ht.us2.codeanyapp.com",
     ".herokuapp.com"
 ]
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_summernote',
     'blog',
 ]
 
@@ -93,7 +94,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-ajgreaves-blog-lesson-pl-lfv6kgfdws.us2.codeanyapp.com",
+    "https://8000-ajgreaves-blog-lesson-pl-mjfxnpd4ht.us2.codeanyapp.com",
     "https://*.herokuapp.com"
 ]
 
