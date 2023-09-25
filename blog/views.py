@@ -25,17 +25,15 @@ class PostList(generic.ListView):
 def post_detail(request, slug, *args, **kwargs):
     """
     A function-based view to view the detail of a post.
-    Largely the same as the class-based, but we don't have
-    different methods for GET and POST. Because it's not a
-    class, all of the extra "self" stuff is removed too.
-
-    Functionally, it's the same, but it is a bit clearer
-    what's going on. To differentiate between request methods,
-    we use request.method == "GET" or request.method == "POST"
+    Largely the same as the class-based, but it is a bit
+    clearer what's going on.
     """
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
+
+    # this works and is simpler...
+    # post = get_object_or_404(Post, slug=slug, status=1)
 
     return render(
         request,
