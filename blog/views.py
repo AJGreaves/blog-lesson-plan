@@ -32,9 +32,6 @@ def post_detail(request, slug, *args, **kwargs):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
 
-    # this works and is simpler...
-    # post = get_object_or_404(Post, slug=slug, status=1)
-
     return render(
         request,
         "blog/post_detail.html",
