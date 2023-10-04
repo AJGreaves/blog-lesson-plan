@@ -6,7 +6,7 @@ def about_me(request, *args, **kwargs):
     """
     Renders the About page
     """
-    about = About.objects.all().order-by('-updated-on').first()
+    about = About.objects.all().order_by('-updated_on').first()
 
     return render(
         request,
