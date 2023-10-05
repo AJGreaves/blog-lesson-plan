@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
+from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, Comment
 from .forms import CommentForm
 
 # Create your views here.
@@ -81,5 +82,30 @@ def post_like(request, slug, *args, **kwargs):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def comment_edit(request, slug, comment_id, *args, **kwargs):
+    """
+    view to edit comments
+    """
+    if request.method == "POST":
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        # comment = post.comments.filter(id=comment_id).first()
+        comment = get_object_or_404(Comment, id=comment_id)
+
+        comment_form = CommentForm(data=request.POST, instance=comment)
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.approved = False
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))

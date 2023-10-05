@@ -1,0 +1,14 @@
+var editButtons = document.getElementsByClassName("btn-edit");
+var commentText = document.getElementsByTagName("textarea")[0];
+var commentForm = document.getElementById("commentForm");
+var submitButton = document.getElementById("submitButton");
+
+for (let button of editButtons) {
+    button.addEventListener("click", (e) => {
+        let commentId = e.target.getAttribute("comment_id");
+        let commentContent = document.getElementById(`comment${commentId}`).innerText;
+        commentText.value = commentContent;
+        submitButton.innerText = "Update";
+        commentForm.setAttribute("action", `edit_comment/${commentId}`);
+    });
+}
