@@ -36,7 +36,20 @@ def post_detail(request, slug, *args, **kwargs):
     liked = False
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
-    comment_form = CommentForm()
+    commented = False
+
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.author = request.user
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            commented = True
+            comment.save()
+        else:
+            comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
 
     if post.likes.filter(id=request.user.id).exists():
         liked = True
@@ -48,6 +61,7 @@ def post_detail(request, slug, *args, **kwargs):
             "post": post,
             "liked": liked,
             "comments": comments,
+            "commented": commented,
             "comment_count": comment_count,
             "comment_form": comment_form,
         },
