@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.http import HttpResponseRedirect
 from .models import Post
+from .forms import CommentForm
 
 # Create your views here.
 
@@ -35,6 +36,7 @@ def post_detail(request, slug, *args, **kwargs):
     liked = False
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+    comment_form = CommentForm()
 
     if post.likes.filter(id=request.user.id).exists():
         liked = True
@@ -47,6 +49,7 @@ def post_detail(request, slug, *args, **kwargs):
             "liked": liked,
             "comments": comments,
             "comment_count": comment_count,
+            "comment_form": comment_form,
         },
     )
 
