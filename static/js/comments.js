@@ -8,8 +8,12 @@ var deleteButtons = document.getElementsByClassName("btn-delete");
 var deleteConfirm = document.getElementById("deleteConfirm");
 
 /**
- * Add event listeners to comment edit buttons, build the specific link 
- * for each button needed to call the edit view with the correct commentId
+ * When any button from the editButtons collection is clicked, the code:
+ * Retrieves the associated comment ID.
+ * Fetches the content of the corresponding comment.
+ * Populates a form with this content for editing.
+ * Changes the submit button's text to indicate an update.
+ * Updates the form's action to point to an endpoint for editing the comment with the respective ID.
  */
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
@@ -23,9 +27,10 @@ for (let button of editButtons) {
 
 
 /**
- * Add event listeners to each comment delete button, set the relevant 
- * attribute value on the modal so that the correct url is accessed to delete
- * the selected comment.
+ * when any button from the deleteButtons collection is clicked, the code:
+ * Retrieves the comment ID associated with the clicked button.
+ * Updates a link's href to point to a URL for deleting the comment with the given ID.
+ * Displays a confirmation modal to the user.
  */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
