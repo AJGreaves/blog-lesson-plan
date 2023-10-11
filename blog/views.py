@@ -34,56 +34,35 @@ def post_detail(request, slug, *args, **kwargs):
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    liked = False
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
-    commented = False
 
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment_form.instance.author = request.user
             comment = comment_form.save(commit=False)
+            comment.author = request.user
             comment.post = post
-            commented = True
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+            )
         else:
             comment_form = CommentForm()
     else:
         comment_form = CommentForm()
-
-    if post.likes.filter(id=request.user.id).exists():
-        liked = True
 
     return render(
         request,
         "blog/post_detail.html",
         {
             "post": post,
-            "liked": liked,
             "comments": comments,
-            "commented": commented,
             "comment_count": comment_count,
             "comment_form": comment_form,
         },
     )
-
-
-def post_like(request, slug, *args, **kwargs):
-    """
-    The view to update the likes. Although it should always be
-    called using the POST method, we have still added some
-    defensive programming to make sure.
-    """
-    post = get_object_or_404(Post, slug=slug)
-
-    if request.method == "POST" and request.user.is_authenticated:
-        if post.likes.filter(id=request.user.id).exists():
-            post.likes.remove(request.user)
-        else:
-            post.likes.add(request.user)
-
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 def comment_edit(request, slug, comment_id, *args, **kwargs):

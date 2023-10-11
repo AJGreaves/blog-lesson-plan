@@ -16,17 +16,12 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    likes = models.ManyToManyField(
-        User, related_name='blogpost_like', blank=True)
 
     class Meta:
         ordering = ["-created_on"]
 
     def __str__(self):
         return f"{self.title} | written by {self.author}"
-
-    def number_of_likes(self):
-        return self.likes.count()
 
 
 class Comment(models.Model):
