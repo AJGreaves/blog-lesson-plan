@@ -48,6 +48,7 @@ def post_detail(request, slug, *args, **kwargs):
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
             )
+            comment_form = CommentForm()
         else:
             comment_form = CommentForm()
     else:
@@ -73,7 +74,7 @@ def comment_edit(request, slug, comment_id, *args, **kwargs):
 
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comment = get_object_or_404(Comment, id=comment_id)
+        comment = get_object_or_404(Comment, pk=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
 
         if comment_form.is_valid() and comment.author == request.user:
@@ -95,7 +96,7 @@ def comment_delete(request, slug, comment_id, *args, **kwargs):
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    comment = get_object_or_404(Comment, id=comment_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author == request.user:
         comment.delete()
