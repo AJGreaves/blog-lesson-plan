@@ -1,5 +1,5 @@
 var editButtons = document.getElementsByClassName("btn-edit");
-var commentText = document.getElementsByTagName("textarea")[0];
+var commentText = document.getElementById("id_body");
 var commentForm = document.getElementById("commentForm");
 var submitButton = document.getElementById("submitButton");
 
