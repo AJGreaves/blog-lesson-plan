@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .models import About
+from .forms import CollaborateForm
 
 
 def about_me(request, *args, **kwargs):
@@ -7,9 +9,13 @@ def about_me(request, *args, **kwargs):
     Renders the About page
     """
     about = About.objects.all().order_by('-updated_on').first()
+    collaborate_form = CollaborateForm()
 
     return render(
         request,
         "about/about.html",
-        {"about": about},
+        {
+            "about": about,
+            "collaborate_form": collaborate_form
+        },
     )
