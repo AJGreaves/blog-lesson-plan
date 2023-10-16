@@ -10,13 +10,11 @@ from .forms import CommentForm
 
 class PostList(generic.ListView):
     """
-    This is Django's generic ListView. We are a little limited as to
-    what we can do with this, but if we really needed to, we could
-    access the request object here too.
-
-    It's a class, which is why we had used class-based views in the
-    original blog material. Now, to show what's going on under the
-    hood, so to speak, we'll use function-based ones instead.
+    Display a list of published blog posts.
+    This view extends Django's generic ListView to display a paginated list of
+    published blog posts on the website's index page. It retrieves blog posts
+    with a 'status' of 1, which indicates that they are published and ready for
+    display.
     """
 
     model = Post
@@ -27,9 +25,12 @@ class PostList(generic.ListView):
 
 def post_detail(request, slug, *args, **kwargs):
     """
-    A function-based view to view the detail of a post.
-    Largely the same as the class-based, but it is a bit
-    clearer what's going on.
+    Display the details of a blog post, including comments
+    and a comment submission form.
+    This view retrieves and displays the details of a specific
+    blog post identified by its 'slug.'
+    It also fetches and orders the associated comments for the post,
+    as well as provides a form for users to submit new comments.
     """
 
     queryset = Post.objects.filter(status=1)
@@ -38,7 +39,6 @@ def post_detail(request, slug, *args, **kwargs):
     comment_count = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
-        print("inside if request.method == 'POST'")
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -55,7 +55,6 @@ def post_detail(request, slug, *args, **kwargs):
     else:
         comment_form = CommentForm()
 
-    print("Before return render()")
     return render(
         request,
         "blog/post_detail.html",
@@ -70,7 +69,12 @@ def post_detail(request, slug, *args, **kwargs):
 
 def comment_edit(request, slug, comment_id, *args, **kwargs):
     """
-    view to edit comments
+    Edit a comment associated with a blog post.
+    This view allows users to edit a comment that is associated
+    with a specific blog post.
+    The comment is identified by its 'comment_id' and must be authored
+    by the current user.
+    Users can submit changes to the comment using a form.
     """
     if request.method == "POST":
 
@@ -94,7 +98,11 @@ def comment_edit(request, slug, comment_id, *args, **kwargs):
 
 def comment_delete(request, slug, comment_id, *args, **kwargs):
     """
-    view to delete comment
+    Delete a comment associated with a blog post.
+    This view allows users to delete a comment that is associated with 
+    a specific blog post.
+    The comment is identified by its 'comment_id' and must be authored 
+    by the current user.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)

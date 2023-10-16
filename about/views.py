@@ -6,7 +6,10 @@ from .forms import CollaborateForm
 
 def about_me(request, *args, **kwargs):
     """
-    Renders the About page
+    Render the About page, allowing users to submit collaboration requests.
+    Retrieves the most recent information about the author or the website
+    from the 'About' model and displays it on the About page. Users can also 
+    submit collaboration requests using the provided form.
     """
     about = About.objects.all().order_by('-updated_on').first()
 
