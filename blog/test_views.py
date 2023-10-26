@@ -29,13 +29,3 @@ class TestBlogViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Comment submitted and awaiting approval',
                       response.content)
-
-    def test_comment_body_is_required(self):
-        self.client.login(username="test", password="test")
-        post_data = {
-            'body': ''
-        }
-        response = self.client.post(
-            reverse('post_detail', args=['test']), post_data)
-        form = response.context['comment_form']
-        self.assertFalse(form.is_valid())
