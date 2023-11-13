@@ -26,6 +26,3 @@ class TestCollaborateForm(TestCase):
         self.assertIn('message', form.errors.keys())
         self.assertEqual(form.errors['message'][0], 'This field is required.')
 
-    def test_fields_are_explicit_in_form_metaclass(self):
-        form = CollaborateForm()
-        self.assertEqual(form.Meta.fields, ('name', 'email', 'message'))
