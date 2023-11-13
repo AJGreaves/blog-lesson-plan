@@ -20,4 +20,8 @@ class TestCollaborateForm(TestCase):
         self.assertEqual(form.errors['email'][0], 'This field is required.')
 
         # Add your test for the 'message' field here
-        
+        form = CollaborateForm(
+            {'name': 'John Doe', 'email': 'test@test.com', 'message': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('message', form.errors.keys())
+        self.assertEqual(form.errors['message'][0], 'This field is required.')
