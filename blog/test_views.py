@@ -9,7 +9,7 @@ class TestBlogViews(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_superuser(
-            username="test", password="test", email="test@test.com")
+            username="myUsername", password="myPassword", email="test@test.com")
         self.post = Post(title="Blog title", author=self.user,
                          slug="blog-title", excerpt="Blog excerpt",
                          content="Blog content", status=1)
@@ -24,7 +24,7 @@ class TestBlogViews(TestCase):
             response.context['comment_form'], CommentForm)
 
     def test_successful_comment_submission(self):
-        self.client.login(username="test", password="test")
+        self.client.login(username="myUsername", password="myPassword")
         post_data = {
             'body': 'This is a test comment.'
         }
