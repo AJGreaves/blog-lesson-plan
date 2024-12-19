@@ -29,10 +29,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    "8000-ajgreaves-blog-lesson-pl-mjfxnpd4ht.us2.codeanyapp.com",
+    "8000-ajgreaves-bloglessonpla-hc2kicltnvv.ws.codeinstitute-ide.net",
     ".herokuapp.com"
 ]
 
@@ -125,7 +125,7 @@ if 'test' in sys.argv:
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-ajgreaves-blog-lesson-pl-mjfxnpd4ht.us2.codeanyapp.com",
+    "https://8000-ajgreaves-bloglessonpla-hc2kicltnvv.ws.codeinstitute-ide.net",
     "https://*.herokuapp.com"
 ]
 
