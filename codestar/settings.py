@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "8000-ajgreaves-bloglessonpla-hc2kicltnvv.ws.codeinstitute-ide.net",
+    "127.0.0.1",
     ".herokuapp.com"
 ]
 
@@ -125,7 +125,7 @@ if 'test' in sys.argv:
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-ajgreaves-bloglessonpla-hc2kicltnvv.ws.codeinstitute-ide.net",
+    "https://localhost",
     "https://*.herokuapp.com"
 ]
 
